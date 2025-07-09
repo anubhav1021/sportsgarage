@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products | Sports Garage</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  .btn-secondary.active {
+    background-color: #1e40af;
+    color: white;
+  }
+
+  .navbar {
+    background-color: #0f172a; /* Navy Blue (Tailwind slate-900) */
+    color: white;
+  }
+
+  .navbar .nav-links a {
+    color: white;
+  }
+
+  .navbar .nav-links a.active {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+</style>
+
+</head>
+<body class="cool-bg-page">
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">Sports Garage</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="featured-products">
+    <div class="container">
+      <h2>Our Products</h2>
+      <p>Discover our complete range of sports and fitness equipment</p>
+      <input type="text" id="productSearch" placeholder="Search products..." style="margin-top: 1rem; padding: 0.5rem; width: 100%; max-width: 400px;">
+
+      <div id="filter-buttons" style="margin: 2rem 0;">
+        <button class="btn btn-secondary active" data-filter="all">All Products</button>
+        <button class="btn btn-secondary" data-filter="gym">Gym Equipment</button>
+        <button class="btn btn-secondary" data-filter="badminton">Badminton</button>
+        <button class="btn btn-secondary" data-filter="cricket">Cricket</button>
+        <button class="btn btn-secondary" data-filter="football">Football</button>
+        <button class="btn btn-secondary" data-filter="accessories">Accessories</button>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card" data-category="gym">
+          <img src="dumbellset.png" alt="Dumbbell Set">
+          <h3>Professional Dumbbell Set</h3>
+          <p>₹2,999</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="badminton">
+          <img src="yonexrecquet.png" alt="Badminton Racket">
+          <h3>Yonex Badminton Racket</h3>
+          <p>₹4,500</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="gym">
+          <img src="resistance band.png" alt="Resistance Band">
+          <h3>Resistance Bands Set</h3>
+          <p>₹899</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="cricket">
+          <img src="batt.png" alt="Cricket Bat">
+          <h3>Cricket Bat - English Willow</h3>
+          <p>₹3,200</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="football">
+          <img src="football.png" alt="Football">
+          <h3>Football - FIFA Approved</h3>
+          <p>₹1,299</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="gym">
+          <img src="yogamatt.png" alt="Yoga Mat">
+          <h3>Yoga Mat Premium</h3>
+          <p>₹799</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="badminton">
+          <img src="shuttle.png" alt="Shuttlecocks">
+          <h3>Badminton Shuttlecocks</h3>
+          <p>₹450</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+        <div class="product-card" data-category="accessories">
+          <img src="imagefourr.png" alt="Water Bottle">
+          <h3>Water Bottle - Insulated</h3>
+          <p>₹399</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <h3 class="footer-heading">SportZone</h3>
+      <p>Your trusted partner in sports and fitness. We provide quality equipment and expert services to help you achieve your athletic goals.</p>
+      <div class="social">
+        <a href="#">Instagram--soon</a>
+        <a href="#">YouTube--soon</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4 class="footer-heading">Quick Links</h4>
+      <a href="#">Home</a>
+      <a href="products.html">Products</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-services">
+      <h4 class="footer-heading">Our Offerings</h4>
+      <a href="#">Gym Equipment</a>
+      <a href="#">Badminton</a>
+      <a href="#">Custom Kits</a>
+      <a href="#">Repair</a>
+    </div>
+    <div class="footer-contact">
+      <h4 class="footer-heading">Contact Info</h4>
+      <p>📍 Shop 8 1st floor Amrapali Crystal Homes Market,<br> Sector 76, Noida, Uttar Pradesh, 201304</p>
+      <p>📧 achintkakkar@gmail.com</p>
+      <p>📞 +91 77019 49572</p>
+      <p>🕒 Open Daily: 10:30 AM – 9:00 PM</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2025 Sports Garage. All rights reserved.</p>
+    <div class="footer-policy">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Returns & Refunds</a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const searchInput = document.getElementById('productSearch');
+    const productCards = document.querySelectorAll('.product-card');
+    const filterButtons = document.querySelectorAll('#filter-buttons button');
+    let currentFilter = 'all';
+
+    function filterProducts() {
+      const query = searchInput.value.toLowerCase();
+      productCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const category = card.getAttribute('data-category');
+        const matchesSearch = title.includes(query);
+        const matchesFilter = currentFilter === 'all' || category === currentFilter;
+        card.style.display = matchesSearch && matchesFilter ? 'block' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterProducts);
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.getAttribute('data-filter');
+        filterProducts();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Services - Sports Garage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .service-card img {
+      width: 100%;
+      border-radius: 6px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .service-card h4 {
+      margin: 10px 0 5px;
+    }
+
+    .service-card ul {
+      padding-left: 20px;
+    }
+
+    .service-card .price {
+      font-weight: 600;
+      color: #1a73e8;
+      margin: 10px 0;
+    }
+
+    .string-options,
+    .book-form {
+      background: #fff;
+      margin: 30px auto;
+      max-width: 900px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .string-options h3,
+    .book-form h3 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .string-options .options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .string-options .options div {
+      border: 1px solid #ddd;
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .form-group {
+      flex: 1 1 45%;
+    }
+
+    .form-group.full {
+      flex: 1 1 100%;
+    }
+
+    button[type='submit'] {
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .info-strip {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      background: #f1f1f1;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer div {
+      margin: 10px;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+
+    footer .social a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .copyright {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+    }
+  </style>
+  <style>
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    header .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    header nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    header nav a {
+      padding: 10px 0;
+      border-top: 1px solid #ddd;
+      margin: 0;
+      width: 100%;
+    }
+
+    header nav.active {
+      display: flex;
+    }
+
+    .services {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-group {
+      flex: 1 1 100%;
+    }
+
+    .string-options .options {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer div {
+      text-align: center;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <header>
+  <div><strong>🏸 Sports Garage</strong></div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+  <section class="hero">
+    <h2>Our Services</h2>
+    <p>Professional sports equipment services with expert craftsmanship and quick turnaround times</p>
+  </section>
+
+  <section class="services">
+    <div class="service-card">
+      <img src="strings.png" alt="Badminton Stringing" />
+      <h4>Badminton Stringing</h4>
+      <ul>
+        <li>Premium strings</li>
+        <li>24-hour turnaround</li>
+        <li>Multiple tensions</li>
+      </ul>
+      <p class="price">Starting from ₹200</p>
+    </div>
+
+    <div class="service-card">
+      <img src="repair.png" alt="Equipment Repair" />
+      <h4>Equipment Repair</h4>
+      <ul>
+        <li>Gym/fitness gear repairs</li>
+        <li>Spare parts replacement</li>
+        <li>Maintenance checks</li>
+      </ul>
+      <p class="price">Starting from ₹300</p>
+    </div>
+
+    <div class="service-card">
+      <img src="custom.png" alt="Custom Grip Wrapping" />
+      <h4>Custom Grip Wrapping</h4>
+      <ul>
+        <li>Premium grip selection</li>
+        <li>Customizable patterns</li>
+        <li>Anti-slip material</li>
+      </ul>
+      <p class="price">Starting from ₹100</p>
+    </div>
+
+    <div class="service-card">
+      <img src="training.png" alt="Personal Training" />
+      <h4>Personal Training Consultation</h4>
+      <ul>
+        <li>Fitness assessment</li>
+        <li>Goal setting</li>
+        <li>Custom routines</li>
+      </ul>
+      <p class="price">Starting from ₹500/session</p>
+    </div>
+  </section>
+
+  <section class="string-options">
+    <h3>Badminton String Options</h3>
+    <div class="options">
+      <div>Yonex BG65<br />₹200</div>
+      <div>Yonex BG-66<br />₹250</div>
+      <div>Li-Ning No.1<br />₹300</div>
+      <div>Ashaway Zymax<br />₹400</div>
+    </div>
+  </section>
+
+  <section class="book-form">
+    <h3>Book a Service</h3>
+    <form action="https://formspree.io/f/xjkrqqkv" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Full Name" required />
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+      </div>
+      <div class="form-group full">
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <select name="service" required>
+          <option value="">Select a service</option>
+          <option>Badminton Stringing</option>
+          <option>Equipment Repair</option>
+          <option>Grip Wrapping</option>
+          <option>Training Consultation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="date" name="date" required />
+      </div>
+      <div class="form-group full">
+        <textarea name="details" rows="4" placeholder="Additional Details..."></textarea>
+      </div>
+      <div class="form-group full">
+        <button type="submit">📅 Book Service</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="info-strip">
+    Call now or fill out the form to reserve your service slot today!
+  </div>
+
+  <footer>
+    <div>
+      <h4>Sports Garage</h4>
+      <p>Reliable sports services and premium equipment at one stop.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#">Stringing</a>
+      <a href="#">Repair</a>
+      <a href="#">Grip Wrapping</a>
+      <a href="#">Training</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📍 Sector 76, Noida</p>
+      <p>📞 +91 77019 49572</p>
+      <p>📧 achintkakkar@gmail.com</p>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    © 2025 Sports Garage. All rights reserved.
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('mainNav').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
