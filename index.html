@@ -1,301 +1,842 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sports Garage</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportZone</title>
     <style>
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-  }
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  .navbar {
-    background-color: #0f172a;
-    color: white;
-    padding: 1rem;
-  }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background for the overall page */
+            color: #333; /* Default text color for general sections */
+        }
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-  }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-  .menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-  }
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px; /* Consider using padding-left/right on .container within header for consistency */
+            background-color: #ffffff; /* Changed to white */
+            color: #0d1a49; /* Changed to dark blue for text on white background */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: subtle shadow for separation */
+        }
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-  .nav-links li a {
-    color: white;
-    text-decoration: none;
-  }
+        nav ul {
+            list-style: none; /* Removes bullet points */
+            display: flex; /* Makes the navigation list items horizontal */
+            gap: 40px; /* INCREASED SPACE HERE: Changed from 20px to 40px */
+        }
 
-  .nav-links li a.active {
-    text-decoration: underline;
-    font-weight: bold;
-  }
+        nav ul li a {
+            text-decoration: none;
+            color: #0d1a49; /* Changed to dark blue for links on white background */
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
+        nav ul li a:hover {
+            color: #f39c12;
+        }
 
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: #0f172a;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1000;
-    }
+        /* Hero Section Styles */
+        .hero {
+            background-color: #0d1a49; /* Dark blue background for hero section */
+            padding: 60px 0;
+            min-height: 80vh; /* Adjusted for better visual */
+            display: flex;
+            align-items: center;
+        }
 
-    .nav-links.active {
-      display: flex;
-    }
-  }
-</style>
+        .hero-content {
+            display: flex;
+            flex-direction: row; /* Default to row for larger screens */
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start (top) */
+            max-width: 1400px; 
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 40px; /* Space between text and images */
+        }
 
+        .hero-text {
+            flex: 1; /* Takes available space */
+            min-width: 300px; /* Ensure text doesn't get too narrow */
+            text-align: left;
+            padding-right: 20px; /* Add some padding to the right of the text */
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff; /* White text */
+        }
+
+        .hero-text h1 span {
+            color: #f39c12; /* Orange color for "Destination" */
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #ccc; /* Slightly lighter white for paragraph */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-right: 15px; /* Space between buttons */
+        }
+
+        .btn-primary {
+            background-color: #f39c12; /* Orange background */
+            color: #fff;
+            border: 2px solid #f39c12;
+        }
+
+        .btn-primary:hover {
+            background-color: #e08e0b;
+            border-color: #e08e0b;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #f39c12; /* Orange text */
+            border: 2px solid #f39c12;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        /* Slideshow Styles - Adjusted for better visual fit */
+        .hero-image-wrapper {
+            width: 600px; /* Adjusted max width for the image container */
+            height: 400px; /* Adjusted height for a more horizontal image */
+            max-width: 90vw; /* Responsive width */
+            max-height: 60vw; /* Responsive height, maintains aspect ratio somewhat */
+            position: relative;
+            overflow: hidden; 
+            border-radius: 10px; 
+            flex-shrink: 0; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+        }
+
+        .hero-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Ensure entire image is visible */
+            opacity: 0; 
+            transition: opacity 1s ease-in-out; 
+            background-color: #0d1a49; /* Background for when image doesn't fill entirely */
+        }
+
+        .hero-image-wrapper img.active {
+            opacity: 1; 
+        }
+
+        .customer-count-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        /* Keyframes for slideshow animation (using JavaScript for control is recommended) */
+        /* If using CSS animation, ensure paths are correct and images are responsive */
+        @keyframes slideshow {
+            0% { opacity: 1; }
+            20% { opacity: 1; } 
+            25% { opacity: 0; } 
+            45% { opacity: 0; } 
+            50% { opacity: 1; } 
+            70% { opacity: 1; }
+            75% { opacity: 0; }
+            95% { opacity: 0; }
+            100% { opacity: 1; } 
+        }
+
+        .hero-image-wrapper img:nth-child(1) {
+            animation: slideshow 20s infinite 0s; 
+        }
+        .hero-image-wrapper img:nth-child(2) {
+            animation: slideshow 20s infinite 5s; 
+        }
+        .hero-image-wrapper img:nth-child(3) {
+            animation: slideshow 20s infinite 10s; 
+        }
+        .hero-image-wrapper img:nth-child(4) {
+            animation: slideshow 20s infinite 15s; 
+        }
+
+
+        /* Why Choose Section */
+        .why-choose { 
+            background-color: #f0f0f0; /* Light background for this section */
+            color: #333; /* Dark text */
+            padding: 60px 0;
+        }
+        .why-choose h2 {
+            text-align: center; 
+            margin-bottom: 40px; 
+            font-size: 36px;
+            color: #0d1a49; /* Dark blue heading */
+        }
+        .choose-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .choose-card {
+            background-color: #fff; /* White background for cards */
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1 1 200px; 
+            max-width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            transition: transform 0.3s ease;
+        }
+        .choose-card:hover {
+            transform: translateY(-5px);
+        }
+        .choose-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .choose-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+        .choose-card p {
+            font-size: 16px;
+            color: #666; /* Darker text for readability */
+        }
+
+
+        /* Featured Products */
+        .featured-products {
+            background-color: #f0f0f0; /* Light background */
+            text-align: center;
+            color: #333;
+            padding: 60px 0;
+        }
+        .featured-products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #0d1a49; /* Dark blue heading */
+        }
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background-color: #fff; /* White background for cards */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1 1 280px;
+            max-width: 320px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain; 
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #0d1a49; /* Dark blue heading */
+        }
+        .product-card p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f39c12; /* Orange for price */
+        }
+        .product-card .stars {
+            color: #f39c12; /* Orange for stars */
+            margin-bottom: 10px;
+        }
+        .view-all {
+            margin-top: 20px;
+            background-color: #f39c12;
+            color: #fff;
+            border: 2px solid #f39c12;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .view-all:hover {
+            background-color: #e08e0b;
+        }
+
+        /* Badminton Stringing Service */
+        .stringing-service {
+            background-color: #0d1a49; /* Dark blue background */
+            color: #fff;
+            padding: 80px 0;
+        }
+        .stringing-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .stringing-content .text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .stringing-content .text h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+        .stringing-content .text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        .stringing-content .text ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .stringing-content .text ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: #ccc;
+        }
+        .stringing-content .text ul li::before {
+            content: '✓';
+            color: #f39c12;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .stringing-content .image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            text-align: center;
+        }
+        .stringing-content .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .price-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .stringing-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .price-badge {
+                position: static;
+                margin-top: 20px;
+                display: inline-block;
+            }
+            .stringing-content .text ul {
+                text-align: left; /* Keep list items left-aligned */
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 300px; /* Adjust as needed */
+            }
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #f0f0f0; /* Light background */
+            color: #333;
+            text-align: center;
+            padding: 60px 0;
+        }
+        .testimonials h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #0d1a49; /* Dark blue heading */
+        }
+        .testimonial-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .testimonial {
+            background-color: #fff; /* White background for cards */
+            padding: 30px;
+            border-radius: 8px;
+            flex: 1 1 280px;
+            max-width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #666; /* Darker text */
+        }
+        .testimonial strong {
+            display: block;
+            font-size: 18px;
+            color: #0d1a49; /* Dark blue for name */
+        }
+        .testimonial .stars {
+            color: #f39c12; /* Orange for stars */
+            margin-top: 10px;
+        }
+
+        /* Call to Action (CTA) */
+        .cta {
+            background-color: #f39c12;
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .cta .btn-primary {
+            background-color: #fff;
+            color: #f39c12;
+            border: 2px solid #fff;
+        }
+        .cta .btn-primary:hover {
+            background-color: #eee;
+            color: #e08e0b;
+            border-color: #eee;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111; /* Darker footer */
+            color: #ccc;
+            padding: 50px 0 20px 0;
+            font-size: 15px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-brand, .footer-links, .footer-services, .footer-contact {
+            flex: 1 1 220px;
+            min-width: 200px;
+        }
+        .footer-heading {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .footer-brand p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .footer-brand .social a {
+            color: #f39c12;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .footer-brand .social a:hover {
+            color: #fff;
+        }
+        .footer-links a, .footer-services a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover, .footer-services a:hover {
+            color: #f39c12;
+        }
+        .footer-contact p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer-policy a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+        .footer-policy a:hover {
+            color: #f39c12;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) { 
+            .hero-content {
+                flex-direction: column; 
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-text {
+                padding-right: 0; 
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-image-wrapper {
+                width: 90vw; /* Make it more responsive on smaller screens */
+                height: 60vw; /* Adjust height proportionally */
+                max-width: 600px; /* Max width even on smaller screens */
+                max-height: 400px; /* Max height even on smaller screens */
+                margin-top: 30px; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px; /* Keep a smaller gap for stacked items on mobile */
+                margin-top: 10px;
+            }
+            .hero-image-wrapper {
+                height: 50vw; /* Make it more compact on mobile */
+            }
+            .stringing-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .price-badge {
+                position: static;
+                margin-top: 20px;
+                display: inline-block;
+            }
+            .stringing-content .text ul {
+                text-align: left; 
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 300px; 
+            }
+            .footer-grid {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-links, .footer-services, .footer-contact {
+                margin-top: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .footer-policy {
+                margin-top: 10px;
+            }
+            .footer-policy a {
+                margin: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="logo">Sports Zone</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Header -->
-<header class="navbar">
-  <div class="container">
-    <div class="logo">Sports Garage</div>
-    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Sports & Fitness <span>Destination</span></h1>
+                <p>
+                    Discover premium sports equipment, expert badminton stringing services,
+                    and everything you need to excel in your athletic journey.
+                </p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
+                <a href="#" class="btn btn-secondary">Explore</a>
+            </div>
 
-
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Your Sports & Fitness Destination</h1>
-        <p>Discover premium sports equipment, expert badminton stringing services, and everything you need to excel in your athletic journey.</p>
-        <a href="products.html" class="btn btn-primary">Shop Now</a>
-        <a href="services.html" class="btn btn-secondary">Explore</a>
-      </div>
-      <div class="hero-image">
-  <div class="slideshow">
-    <img src="imageone.png" class="slide active" alt="Slide 1">
-    <img src="imagetwoo.png" class="slide" alt="Slide 2">
-    <img src="imagethree.png" class="slide" alt="Slide 3">
-    <img src="imagefourr.png" class="slide" alt="slide 4">
-  </div>
-  <div class="hero-badge">2000+<br><span>Happy Customers</span></div>
-</div>
-
-    </div>
-  </section>
-
-  <!-- Why Choose Section -->
-  <!-- Why Choose Section -->
-<section class="why-choose">
-  <div class="container">
-    <h2>Why Choose Sports Garage</h2>
-    <div class="choose-grid">
-      
-    <div class="choose-card">
-  <img src="qualityprod.png" title="High quality products" alt="Quality" class="choose-icon">
-  <h3>Quality Products</h3>
-  <p>Premium sports equipment from trusted brands</p>
-</div>
-
-
-
-      <div class="choose-card">
-        <img src="expertservice.png"  alt="Expert Services" class="choose-icon">
-        
-        <h3>Expert Services</h3>
-  <p>Professional badminton stringing and equipment repair</p>
-      </div>
-
-      <div class="choose-card">
-        <img src="trustedbrand.png" alt="Trusted Brand" class="choose-icon">
-        <h3>Trusted Brand</h3>
-        <p>5+ years of serving the sports community</p>
-      </div>
-
-      <div class="choose-card">
-        <img src="rapid.png" alt="Quick Service" class="choose-icon">
-        <h3>Quick Service</h3>
-        <p>24-48 hour turnaround on all services</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- Featured Products -->
-  <section class="featured-products">
-    <div class="container">
-      <h2>Featured Products</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="dumbellset.png" alt="Dumbbell Set">
-          <h3>Professional Dumbbell Set</h3>
-          <p>₹2,999</p>
+            <div class="hero-image-wrapper">
+                <img src="imageone.png" alt="Train Like A Pro">
+                <img src="imagetwoo.png" alt="Smash With Precision">
+                <img src="imagethree.png" alt="Custom Printed Sportswear">
+                <img src="imagefourr.png" alt="Accessories That Boost Performance">
+                <div class="customer-count-badge">500+ Happy Customers</div>
+            </div>
         </div>
-        <div class="product-card">
-          <img src="yonexrecquet.png" alt="Badminton Racket">
-          <h3>Yonex Badminton Racket</h3>
-          <p>₹4,500</p>
+    </section>
+
+    <section class="why-choose">
+        <div class="container">
+            <h2>Why Choose SportZone</h2>
+            <div class="choose-grid">
+                <div class="choose-card">
+                    <img src="qualityprod.png" title="High quality products" alt="Quality" class="choose-icon">
+                    <h3>Quality Products</h3>
+                    <p>Premium sports equipment from trusted brands</p>
+                </div>
+                <div class="choose-card">
+                    <img src="expertservice.png" alt="Expert Services" class="choose-icon">
+                    <h3>Expert Services</h3>
+                    <p>Professional badminton stringing and equipment repair</p>
+                </div>
+                <div class="choose-card">
+                    <img src="trustedbrand.png" alt="Trusted Brand" class="choose-icon">
+                    <h3>Trusted Brand</h3>
+                    <p>5+ years of serving the sports community</p>
+                </div>
+                <div class="choose-card">
+                    <img src="rapid.png" alt="Quick Service" class="choose-icon">
+                    <h3>Quick Service</h3>
+                    <p>24-48 hour turnaround on all services</p>
+                </div>
+            </div>
         </div>
-        <div class="product-card">
-          <img src="yogamatt.png " alt="Yoga Mat">
-          <h3>Premium Yoga Mat</h3>
-          <p>₹799</p>
+    </section>
+
+    <section class="featured-products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="dumbellset.png" alt="Dumbbell Set">
+                    <h3>Professional Dumbbell Set</h3>
+                    <p>₹2,999</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="product-card">
+                    <img src="yonexrecquet.png" alt="Badminton Racket">
+                    <h3>Yonex Badminton Racket</h3>
+                    <p>₹4,500</p>
+                    <div class="stars">⭐⭐⭐⭐</div>
+                </div>
+                <div class="product-card">
+                    <img src="yogamatt.png" alt="Yoga Mat">
+                    <h3>Premium Yoga Mat</h3>
+                    <p>₹799</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            <a href="products.html" class="btn view-all">View all Products</a>
         </div>
-      </div>
-      <a href="products.html" class="btn view-all">View all Products</a>
-    </div>
-  </section>
+    </section>
 
-  <!-- Badminton Stringing Service -->
-  <section class="stringing-service">
-    <div class="container stringing-content">
-      <div class="text">
-        <h2>Professional Badminton Stringing</h2>
-        <p>Get your racket professionally strung with premium strings. We offer various string types and tension to match your playing style.</p>
-        <ul>
-          <li>Multiple string options available</li>
-          <li>Custom tension adjustment</li>
-          <li>24-hour turnaround time</li>
-        </ul>
-        <a href="#" class="btn btn-secondary">Book a Stringing Now</a>
-      </div>
-      <div class="image">
-        <img src="proffstring.png" alt="Badminton Player">
-        <div class="price-badge">From ₹800</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>What Our Customers Say</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial">
-          <p>"Amazing quality, fast delivery and top-notch support!"</p>
-          <strong>Priya Sharma</strong>
+    <section class="stringing-service">
+        <div class="container stringing-content">
+            <div class="text">
+                <h2>Professional Badminton Stringing</h2>
+                <p>Get your racket professionally strung with premium strings. We offer various string types and tension to match your playing style.</p>
+                <ul>
+                    <li>Multiple string options available</li>
+                    <li>Custom tension adjustment</li>
+                    <li>24-hour turnaround time</li>
+                </ul>
+                <a href="#" class="btn btn-secondary">Book a Stringing Now</a>
+            </div>
+            <div class="image">
+                <img src="proffstring.png" alt="Badminton Player">
+                <div class="price-badge">From ₹800</div>
+            </div>
         </div>
-        <div class="testimonial">
-          <p>"Best racket stringing service around. Super satisfied!"</p>
-          <strong>Ajay Patel</strong>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Amazing quality, fast delivery and top-notch support!"</p>
+                    <strong>Priya Sharma</strong>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Best racket stringing service around. Super satisfied!"</p>
+                    <strong>Ajay Patel</strong>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Lovely product collection and good value for money."</p>
+                    <strong>Sneha Kumar</strong>
+                    <div class="stars">⭐⭐⭐⭐</div>
+                </div>
+            </div>
         </div>
-        <div class="testimonial">
-          <p>"Lovely product collection and good value for money."</p>
-          <strong>Sneha Kumar</strong>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Sports Journey?</h2>
+            <p>Visit our store today and discover the perfect equipment for your fitness goals.</p>
+            <a href="contact.html" class="btn btn-primary">Visit Our Store</a>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Call to Action -->
-  <section class="cta">
-    <div class="container">
-      <h2>Ready to Start Your Sports Journey?</h2>
-      <p>Visit our store today and discover the perfect equipment for your fitness goals.</p>
-      <a href="contact.html" class="btn btn-primary">Visit Our Store</a>
-    </div>
-  </section>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3 class="footer-heading">SportZone</h3>
+                <p>Your trusted partner in sports and fitness. We provide quality equipment and expert services to help you achieve your athletic goals.</p>
+                <div class="social">
+                    <a href="#">Instagram--soon</a>
+                    <a href="#">YouTube--soon</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="products.html">Products</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-services">
+                <h4 class="footer-heading">Our Offerings</h4>
+                <a href="#">Gym Equipment</a>
+                <a href="#">Badminton</a>
+                <a href="#">Custom Kits</a>
+                <a href="#">Repair</a>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-heading">Contact Info</h4>
+                <p>📍 Shop 8 1st floor Amrapali Crystal Homes Market,<br> Sector 76, Noida, Uttar Pradesh, 201304</p>
+                <p>📧 achintkakkar@gmail.com</p>
+                <p>📞 +91 77019 49572</p>
+                <p>🕒 Open Daily: 10:30 AM – 9:00 PM</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2025 SportZone. All rights reserved.</p>
+            <div class="footer-policy">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Returns & Refunds</a>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Footer -->
-<footer class="footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <h3 class="footer-heading">SportZone</h3>
-      <p>Your trusted partner in sports and fitness. We provide quality equipment and expert services to help you achieve your athletic goals.</p>
-      <div class="social">
-        <a href="#">Instagram--soon</a>
-        <a href="#">YouTube--soon</a>
-      </div>
-    </div>
-    <div class="footer-links">
-      <h4 class="footer-heading">Quick Links</h4>
-      <a href="#">Home</a>
-      <a href="products.html">Products</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="footer-services">
-      <h4 class="footer-heading">Our Offerings</h4>
-      <a href="#">Gym Equipment</a>
-      <a href="#">Badminton</a>
-      <a href="#">Custom Kits</a>
-      <a href="#">Repair</a>
-    </div>
-    <div class="footer-contact">
-      <h4 class="footer-heading">Contact Info</h4>
-      <p>📍 Shop 8 1st floor Amrapali Crystal Homes Market,<br> Sector 76, Noida, Uttar Pradesh, 201304</p>
-      <p>📧 achintkakkar@gmail.com</p>
-      <p>📞 +91 77019 49572</p>
-      <p>🕒 Open Daily: 10:30 AM – 9:00 PM</p>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>© 2025 Sports Garage. All rights reserved.</p>
-    <div class="footer-policy">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Returns & Refunds</a>
-    </div>
-  </div>
-</footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            nav.classList.toggle("show");
+        }
 
-  <script src="script.js"></script>
+        // JavaScript for slideshow (recommended over pure CSS animation for better control)
+        let slideIndex = 0;
+        showSlides();
 
-<button class="toggle-dark-mode" onclick="document.body.classList.toggle('dark-mode')">
-  Toggle Dark Mode
-</button>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+        function showSlides() {
+            let i;
+            let slides = document.querySelectorAll(".hero-image-wrapper img");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active"); 
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].classList.add("active"); 
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+    </script>
 
-    menuToggle.addEventListener("click", function () {
-      navLinks.classList.toggle("active");
-    });
-  });
-</script>
-
-
+    <button class="toggle-dark-mode" onclick="document.body.classList.toggle('dark-mode')">
+        Toggle Dark Mode
+    </button>
 
 </body>
 </html>
